@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: "luis"
+  password: "1998"
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: platziblog_poo_development
+  
+test:
+  <<: *default
+  database: platziblog_poo_test
+
+production:
+  <<: *default
+  database: platziblog_poo_production
+  username: platziblog_poo
+  password: <%= ENV['PLATZIBLOG_POO_DATABASE_PASSWORD'] %>
